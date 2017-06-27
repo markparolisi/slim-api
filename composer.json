@@ -1,0 +1,31 @@
+{
+  "name": "vendor-name/project-name",
+  "description": "This is a very cool package!",
+  "version": "0.0.1",
+  "php": ">=7.0",
+  "keywords": [
+    "awesome"
+  ],
+  "homepage": "https://github.com/org/repo",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mark Parolisi",
+      "email": "foo@bar.com",
+      "homepage": "http://markparolisi.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/org/repo/issues"
+  },
+  "require": {
+    "slim/slim": "3.8.1",
+    "erdiko/eloquent" : "1.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.2.2",
+    "phpmd/phpmd": "2.6.0",
+    "squizlabs/php_codesniffer": "3.*"
+  }
+}
