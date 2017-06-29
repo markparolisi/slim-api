@@ -6,11 +6,11 @@ class Config
 {
     private static $instance = null;
 
-    private $config;
+    private $configuration;
 
     private function __construct()
     {
-        $this->config = new \Noodlehaus\Config('config.json');
+        $this->configuration = new \Noodlehaus\Config('config.json');
     }
 
     public static function getInstance()
@@ -25,6 +25,6 @@ class Config
 
     public function config()
     {
-        return $this->config;
+        return $this->configuration;
     }
 }

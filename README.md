@@ -18,9 +18,26 @@ Example application for a PHP-based JSON API with all of the testing, linting, a
 - PHPDocumentor has to be manually run with `composer run-script document`
 
 
+## Config
+
+The configuration JSON file is loaded via the \App\Utils\Config singleton class and provides easy getters for complex values.
+
+## Routing
+
+SlimPHP handles all of the routing. Just one route in the main app.php now for demo purposes. 
+
 ## Models
 
+Using the Eloquent ORM package (from the Laravel project) as a standalone
 
 ## Controllers
 
+The controllers are generic callbacks that are referenced by the Slim PHP route calls
+
+
 ## Authentication
+
+TK
+
+
+## Error Messaging
