@@ -15,7 +15,7 @@ class Decorator
      *
      * @var
      */
-    protected $original_model;
+    protected $originalModel;
 
     /**
      * Decorated model
@@ -32,6 +32,6 @@ class Decorator
      */
     public function __construct($model)
     {
-        $this->model = $this->original_model = $model;
+        $this->model = $this->originalModel = $model;
     }
 }

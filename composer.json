@@ -32,8 +32,9 @@
   "scripts" : {
     "post-install-cmd": [
       "./vendor/bin/phpunit --configuration phpunit.xml",
-      "./vendor/bin/php-cs-fixer fix src/ --dry-run",
-      "./vendor/bin/phpcs --standard=PSR2 src/"
+      "./vendor/bin/php-cs-fixer fix src/ ",
+      "./vendor/bin/phpcs src/",
+      "./vendor/bin/phpmd src/ text ./ruleset.xml"
     ]
   }
 }

@@ -6,8 +6,11 @@ language: php
 php:
   - '7.1'
 
+before_script:
+  - phpenv config-rm xdebug.ini # x-debug unnecessarily slows the build
+
 install:
   - pear install pear/PHP_CodeSniffer
-  - composer install --dev
   - phpenv rehash # refreshes path
+  - composer install --dev
 
