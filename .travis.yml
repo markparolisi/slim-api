@@ -1,0 +1,12 @@
+# env
+sudo: false
+dist: trusty
+
+language: php
+php:
+  - '7.1'
+
+install:
+  - pear install pear/PHP_CodeSniffer
+  - composer install --dev
+
