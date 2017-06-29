@@ -9,4 +9,5 @@ php:
 install:
   - pear install pear/PHP_CodeSniffer
   - composer install --dev
+  - phpenv rehash # refreshes path
 

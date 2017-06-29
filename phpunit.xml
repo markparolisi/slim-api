@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
         backupGlobals="true"
         backupStaticAttributes="false"
-        bootstrap="/tests/bootstrap.php"
+        bootstrap="./tests/bootstrap.php"
         cacheTokens="false"
         colors="false"
         convertErrorsToExceptions="true"
@@ -21,8 +21,8 @@
         timeoutForLargeTests="60"
         verbose="false">
     <testsuites>
-        <testsuite name="My Test Suite">
-            <directory suffix="Test.php" phpVersion="7.1">/tests</directory>
+        <testsuite name="Demo Test Suite">
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>

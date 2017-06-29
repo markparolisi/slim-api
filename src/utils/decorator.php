@@ -2,7 +2,6 @@
 
 namespace App\Utils;
 
-
 /**
  * Class Decorator
  *
@@ -16,7 +15,7 @@ class Decorator
      *
      * @var
      */
-    protected $_model;
+    protected $original_model;
 
     /**
      * Decorated model
@@ -33,10 +32,6 @@ class Decorator
      */
     public function __construct($model)
     {
-
-        $this->model = $this->_model = $model;
-
+        $this->model = $this->original_model = $model;
     }
-
-
 }
