@@ -1,10 +1,9 @@
 <?php
 
-namespace App;
+namespace App\User;
 
-use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Model extends Illuminate\Database\Eloquent\Model
 {
 
 
