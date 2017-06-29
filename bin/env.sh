@@ -78,3 +78,6 @@ EOF
 # Restart servers
 service nginx restart
 service php7.1-fpm restart
+
+# Install sample data
+mysql -u root -proot < /vagrant/bin/sample-data.sql

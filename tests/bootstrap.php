@@ -4,4 +4,9 @@
  * Include app packages
  */
 
-require_once './src/app.php';
+
+require realpath(__DIR__ . '/..') . '/vendor/autoload.php';
+
+foreach (glob("./src/**/*.php") as $filename) {
+    require_once $filename;
+}

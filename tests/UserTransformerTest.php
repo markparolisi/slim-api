@@ -5,6 +5,8 @@ use PHPUnit\Framework\TestCase;
 class UserTransformerTest extends TestCase
 {
 
+    private $user;
+
     protected function setUp()
     {
 
