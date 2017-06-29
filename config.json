@@ -11,7 +11,7 @@
   },
   "pagination": {
     "page": 1,
-    "limit": 0,
+    "limit": 10,
     "offset": 0
   }
 }

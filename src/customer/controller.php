@@ -18,7 +18,8 @@ class Controller
     public static function list($request, $response)
     {
         $params = $request->getParams();
-        $config = \App\Utils\Config::getInstance()->config;
+        $config = \App\Utils\Config::getInstance()->config();
+
         $page   = ! empty($params['page']) ? $params['page'] : $config->get('pagination')['page'];
         $limit  = ! empty($params['limit']) ? $params['limit'] : $config->get('pagination')['limit'];
         $offset = (--$page) * $limit;
