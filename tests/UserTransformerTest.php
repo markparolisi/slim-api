@@ -5,16 +5,14 @@ use PHPUnit\Framework\TestCase;
 class UserTransformerTest extends TestCase
 {
 
-    private $user;
+    private $customer;
 
     protected function setUp()
     {
 
-        $this->user = [
-            'id'    => '1',
-            'title' => 'Mrs.',
-            'name'  => 'Philip',
-            'email' => 'philip@example.org',
+        $this->customer = [
+            'customerNumber' => '34',
+            'customerName'   => 'Jane Doe',
         ];
     }
 
@@ -23,11 +21,11 @@ class UserTransformerTest extends TestCase
 
         $fractal = new League\Fractal\Manager();
 
-        $resource = new League\Fractal\Resource\Item($this->user, new \App\User\Transformer);
+        $resource = new League\Fractal\Resource\Item($this->customer, new \App\Customer\Transformer);
 
-        $expected = '/user/1';
+        $expected = '/customer/34';
         $actual   = $fractal->createData($resource)->toArray()['data']['links'][0]['uri'];
 
-        $this->assertEquals($expected, $actual, 'Should transform the user');
+        $this->assertEquals($expected, $actual, 'Should transform the customer');
     }
 }

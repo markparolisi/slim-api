@@ -23,7 +23,7 @@ class Controller
 
         $customers = \App\Customer\Model::all()->toArray();
 
-        $resource = new \League\Fractal\Resource\Collection($customers, new \App\User\Transformer);
+        $resource = new \League\Fractal\Resource\Collection($customers, new \App\Customer\Transformer);
 
         $data = $fractal->createData($resource)->toArray();
 
