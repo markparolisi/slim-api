@@ -1,16 +1,23 @@
-# env
 sudo: false
 dist: trusty
 
 language: php
 php:
-  - '7.1'
+- '7.1'
 
 before_script:
-  - phpenv config-rm xdebug.ini # x-debug unnecessarily slows the build
+- phpenv config-rm xdebug.ini
 
 install:
-  - pear install pear/PHP_CodeSniffer
-  - phpenv rehash # refreshes path
-  - composer install --dev
+- pear install pear/PHP_CodeSniffer
+- phpenv rehash
+- composer install --dev
 
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: $GITHUB_TOKEN
+  on:
+    repo: markparolisi/slim-api
+    tags: true
