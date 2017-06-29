@@ -4,19 +4,21 @@ namespace App\Customer;
 
 class Transformer extends \League\Fractal\TransformerAbstract
 {
-
-
     private function formatAddress($customer)
     {
-
         $address = '';
-        
-        if ( ! empty($customer['addressLine1'])) {
+
+        if (! empty($customer['addressLine1'])) {
             $address_tpl = '%s %s %s, %s - %s';
 
-            $address = sprintf($address_tpl, $customer['addressLine1'], $customer['addressLine2'], $customer['city'],
-                $customer['state'], $customer['country']);
-
+            $address = sprintf(
+                $address_tpl,
+                $customer['addressLine1'],
+                $customer['addressLine2'],
+                $customer['city'],
+                $customer['state'],
+                $customer['country']
+            );
         }
 
         return $address;

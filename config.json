@@ -1,0 +1,17 @@
+{
+  "database": {
+    "driver": "mysql",
+    "host": "localhost",
+    "database": "slim_demo",
+    "username": "root",
+    "password": "root",
+    "charset": "utf8",
+    "collation": "utf8_unicode_ci",
+    "prefix": ""
+  },
+  "pagination": {
+    "page": 1,
+    "limit": 0,
+    "offset": 0
+  }
+}

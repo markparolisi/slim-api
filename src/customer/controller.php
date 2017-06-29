@@ -18,10 +18,14 @@ class Controller
      */
     public static function list($request, $response, $args)
     {
+        $params = $request->getParams();
+        $page   = ! empty($params['page']) ? $params['page'] : $config->get('pagination')['page'];
+        $limit  = ! empty($params['limit']) ? $params['limit'] : 5;
+        $offset = (--$page) * $limit;
 
         $fractal = new \League\Fractal\Manager();
 
-        $customers = \App\Customer\Model::all()->toArray();
+        $customers = \App\Customer\Model::offset($offset)->take($limit)->get()->toArray();
 
         $resource = new \League\Fractal\Resource\Collection($customers, new \App\Customer\Transformer);
 
