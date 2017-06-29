@@ -12,7 +12,6 @@ class Controller
     /**
      * @param $request
      * @param $response
-     * @param $args
      *
      * @return mixed
      */
