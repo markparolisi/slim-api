@@ -18,10 +18,8 @@ class UserController
      */
     public static function list($request, $response, $args)
     {
-        // just a placeholder. forgive me.
-        var_export($request, $response, $args);
 
-        $fractal = new League\Fractal\Manager();
+        $fractal = new \League\Fractal\Manager();
 
         $users = [
             [
@@ -38,8 +36,12 @@ class UserController
             ]
         ];
 
-        $resource = new League\Fractal\Resource\Collection($users, \App\User\Transformer);
+        $resource = new \League\Fractal\Resource\Collection($users, new \App\User\Transformer);
 
-        return $fractal->createData($resource)->toJson();
+        $data = $fractal->createData($resource)->toArray();
+
+        return $response->withStatus(200)
+                        ->withHeader("Content-Type", "application/json")
+                        ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     }
 }

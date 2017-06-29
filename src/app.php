@@ -9,3 +9,11 @@ foreach (glob("./src/**/*.php") as $filename) {
     require_once $filename;
 }
 
+
+$app = new \Slim\App;
+
+
+$app->get('/users', ['\App\User\UserController', 'list']);
+
+
+$app->run();
