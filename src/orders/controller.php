@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Customer;
+namespace App\Order;
 
 /**
- * Class CustomerController
+ * Class Controller
  *
- * @package App\Customer
+ * @package App\Order
  */
 class Controller
 {
@@ -15,7 +15,7 @@ class Controller
      *
      * @return mixed
      */
-    public static function list($request, $response)
+    public static function single($request, $response)
     {
         $params = $request->getParams();
         $config = \App\Utils\Config::getInstance()->config();
@@ -26,7 +26,7 @@ class Controller
 
         $fractal = new \League\Fractal\Manager();
 
-        $customers = \App\Customer\Model::with('orders')->offset($offset)->take($limit)->get()->toArray();
+        $customers = \App\Customer\Model::offset($offset)->take($limit)->get()->toArray();
 
         $resource = new \League\Fractal\Resource\Collection($customers, new \App\Customer\Transformer);
 

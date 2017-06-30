@@ -1,8 +1,7 @@
 # DEMO Slim PHP API
 [![Build Status](https://travis-ci.org/markparolisi/slim-api.svg?branch=master)](https://travis-ci.org/markparolisi/slim-api.svg?branch=master)
 
-Example application for a PHP-based JSON API with all of the testing, linting, and build info.
-
+Quick and short example application for a PHP-based JSON API with all of the testing, linting, and build info.
 
 ## Installation
 
@@ -18,6 +17,10 @@ Example application for a PHP-based JSON API with all of the testing, linting, a
 - [PHPDocumentor](https://www.phpdoc.org/) has to be manually run with `composer run-script document`
 
 
+## Continuous Integration
+
+Using [Travis CI](https://travis-ci.org/markparolisi/slim-api) to automatically run the code quality tools on branch changes. 
+
 ## Config
 
 The configuration JSON file is loaded via the \App\Utils\Config singleton class and provides easy getters for complex values.
@@ -28,12 +31,12 @@ The configuration JSON file is loaded via the \App\Utils\Config singleton class 
 
 ## Models
 
-Using the [Eloquent ORM package](https://laravel.com/docs/5.0/eloquent) (from the Laravel project) as a standalone
+Using the [Eloquent ORM package](https://laravel.com/docs/5.0/eloquent) (from the Laravel project) as a standalone.
+There is a generic customer database file used to scaffold some data, and I've built two relational models as an example.
 
 ## Controllers
 
 The controllers are generic callbacks that are referenced by the Slim PHP route calls
-
 
 ## Authentication
 
