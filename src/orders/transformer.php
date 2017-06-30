@@ -2,6 +2,10 @@
 
 namespace App\Order;
 
+/**
+ * Class Transformer
+ * @package App\Order
+ */
 class Transformer extends \League\Fractal\TransformerAbstract
 {
     /**
