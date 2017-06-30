@@ -13,7 +13,7 @@ Quick and short example application for a PHP-based JSON API with all of the tes
 ## Code Quality 
 
 - [PHPUnit](https://phpunit.de/) tests are located in the `/tests` directory and are automatically run on Composer updates. 
-- [PHP Mess Detector](https://phpmd.org/) and Code Sniffer are also automatically run
+- [PHP Mess Detector](https://phpmd.org/) and [Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) are also automatically run
 - [PHPDocumentor](https://www.phpdoc.org/) has to be manually run with `composer run-script document`
 
 
