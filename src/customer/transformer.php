@@ -8,9 +8,9 @@ class Transformer extends \League\Fractal\TransformerAbstract
     /**
      * @param array $customer
      *
-     * @return array
+     * @return string
      */
-    private static function formatAddress(array $customer): array
+    private static function formatAddress(array $customer): string
     {
         $address = '';
 
