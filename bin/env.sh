@@ -54,6 +54,10 @@ server {
 		rewrite ^/(.+)/$ /$1 permanent;
 	}
 
+	gzip             on;
+ 	gzip_comp_level  9;
+	gzip_types       application/json;
+
 	# PHP FPM configuration.
 	location ~* \.php$ {
 		fastcgi_pass unix:/run/php/php7.1-fpm.sock;
