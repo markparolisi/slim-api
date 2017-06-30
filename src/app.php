@@ -19,17 +19,17 @@ $app = new \Slim\App;
 
 // Use JWT auth, do not authenticate the token endpoint or the ping endpoint
 $app->add(new \Slim\Middleware\JwtAuthentication([
-	"path" => ["/"],
+    "path" => ["/"],
     "passthrough" => ["/token", "/ping"],
     "secret" => $config->get("authTokenKey"),
-	"error" => function ($request, $response, $arguments) {
-		$data["status"] =	 "error";
-		$data["message"] = $arguments["message"];
-		return $response
-			->withStatus(401)
-			->withHeader("Content-Type", "application/json")
-			->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
-	}
+    "error" => function ($request, $response, $arguments) {
+        $data["status"] =     "error";
+        $data["message"] = $arguments["message"];
+        return $response
+            ->withStatus(401)
+            ->withHeader("Content-Type", "application/json")
+            ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    }
 ]));
 
 
@@ -38,7 +38,7 @@ $app->get("/ping", function ($request, $response) {
 });
 
 $app->get("/token", function ($request, $response) {
-	return $response->write("under construction");
+    return $response->write("under construction");
 });
 
 $app->get("/customers", ["\App\Customer\Controller", "list"]);

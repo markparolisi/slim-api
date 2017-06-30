@@ -2,43 +2,71 @@
 
 namespace App\Customer;
 
-class Transformer extends \League\Fractal\TransformerAbstract {
-	private function formatAddress( $customer ) {
-		$address = '';
+class Transformer extends \League\Fractal\TransformerAbstract
+{
 
-		if ( ! empty( $customer['addressLine1'] ) ) {
-			$address_tpl = '%s %s %s, %s - %s';
+    /**
+     * @param $customer
+     *
+     * @return string
+     */
+    private static function formatAddress($customer)
+    {
+        $address = '';
 
-			$address = sprintf(
-				$address_tpl,
-				$customer['addressLine1'],
-				$customer['addressLine2'],
-				$customer['city'],
-				$customer['state'],
-				$customer['country']
-			);
-		}
+        if (! empty($customer['addressLine1'])) {
+            $address_tpl = '%s %s %s, %s - %s';
 
-		return $address;
-	}
+            $address = sprintf(
+                $address_tpl,
+                $customer['addressLine1'],
+                $customer['addressLine2'],
+                $customer['city'],
+                $customer['state'],
+                $customer['country']
+            );
+        }
 
-	public function transform( array $customer ) {
+        return $address;
+    }
 
-		$fractal = new \League\Fractal\Manager();
+    /**
+     * @param array $customer
+     *
+     * @return array
+     */
+    private static function formatOrders(array $customer): array
+    {
+        $orders = [];
 
-		$orders     = new \League\Fractal\Resource\Collection( $customer['orders'], new \App\Order\Transformer);
+        if (! empty($customer['orders'])) {
+            $fractal = new \League\Fractal\Manager();
+            $orders  = new \League\Fractal\Resource\Collection($customer['orders'], new \App\Order\Transformer);
+            $orders  = $fractal->createData($orders)->toArray()['data'];
+        }
 
-		return [
-			'id'          => (int) $customer['customerNumber'],
-			'name'        => $customer['customerName'],
-			'fullAddress' => $this->formatAddress( $customer ),
-			'orders'      => $fractal->createData($orders)->toArray()['data'],
-			'links'       => [
-				[
-					'rel' => 'self',
-					'uri' => '/customer/' . $customer['customerNumber'],
-				],
-			],
-		];
-	}
+
+        return $orders;
+    }
+
+    /**
+     * @param array $customer
+     *
+     * @return array
+     */
+    public function transform(array $customer)
+    {
+        return [
+            'id'          => (int) $customer['customerNumber'],
+            'name'        => $customer['customerName'],
+            'fullAddress' => self::formatAddress($customer),
+            'orders'      => self::formatOrders($customer),
+            'links'       => [
+                [
+                    'rel' => 'self',
+                    'uri' => '/customer/' . $customer['customerNumber'],
+                ],
+            ],
+        ];
+    }
 }
