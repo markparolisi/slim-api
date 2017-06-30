@@ -37,9 +37,7 @@ $app->get("/ping", function ($request, $response) {
     return $response->write("pong");
 });
 
-$app->get("/token", function ($request, $response) {
-    return $response->write("under construction");
-});
+$app->post("/token", ["\App\Token\Controller", "generate"]);
 
 $app->get("/customers", ["\App\Customer\Controller", "list"]);
 
