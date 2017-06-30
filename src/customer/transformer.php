@@ -6,15 +6,15 @@ class Transformer extends \League\Fractal\TransformerAbstract
 {
 
     /**
-     * @param $customer
+     * @param array $customer
      *
-     * @return string
+     * @return array
      */
-    private static function formatAddress($customer)
+    private static function formatAddress(array $customer): array
     {
         $address = '';
 
-        if (! empty($customer['addressLine1'])) {
+        if ( ! empty($customer['addressLine1'])) {
             $address_tpl = '%s %s %s, %s - %s';
 
             $address = sprintf(
@@ -39,7 +39,7 @@ class Transformer extends \League\Fractal\TransformerAbstract
     {
         $orders = [];
 
-        if (! empty($customer['orders'])) {
+        if ( ! empty($customer['orders'])) {
             $fractal = new \League\Fractal\Manager();
             $orders  = new \League\Fractal\Resource\Collection($customer['orders'], new \App\Order\Transformer);
             $orders  = $fractal->createData($orders)->toArray()['data'];
@@ -54,10 +54,10 @@ class Transformer extends \League\Fractal\TransformerAbstract
      *
      * @return array
      */
-    public function transform(array $customer)
+    public function transform(array $customer): array
     {
         return [
-            'id'          => (int) $customer['customerNumber'],
+            'id'          => (int)$customer['customerNumber'],
             'name'        => $customer['customerName'],
             'fullAddress' => self::formatAddress($customer),
             'orders'      => self::formatOrders($customer),

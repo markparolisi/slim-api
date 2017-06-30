@@ -9,7 +9,7 @@ class Transformer extends \League\Fractal\TransformerAbstract
      *
      * @return array
      */
-    public function transform(array $order)
+    public function transform(array $order): array
     {
 
         // Hide the relationship FK

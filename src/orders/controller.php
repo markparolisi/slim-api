@@ -15,7 +15,7 @@ class Controller
      *
      * @return mixed
      */
-    public static function single($request, $response)
+    public static function single(\Slim\Http\Request $request, \Slim\Http\Response $response): \Slim\Http\Response
     {
         $params = $request->getParams();
         $config = \App\Utils\Config::getInstance()->config();
