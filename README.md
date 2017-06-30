@@ -9,13 +9,13 @@ Example application for a PHP-based JSON API with all of the testing, linting, a
 1. Download this repository
 1. Install the VM with `vagrant up`
 1. Install dependencies with `composer install`
-1. Test web app at `http://localhost:8080/{someRoute}`
+1. Test web app at `http://localhost:8080/ping`
 
 ## Code Quality 
 
-- PHPUnit tests are located in the `/tests` directory and are automatically run on Composer updates. 
-- PHP Mess Detector and Code Sniffer are also automatically run
-- PHPDocumentor has to be manually run with `composer run-script document`
+- [PHPUnit](https://phpunit.de/) tests are located in the `/tests` directory and are automatically run on Composer updates. 
+- [PHP Mess Detector](https://phpmd.org/) and Code Sniffer are also automatically run
+- [PHPDocumentor](https://www.phpdoc.org/) has to be manually run with `composer run-script document`
 
 
 ## Config
@@ -24,11 +24,11 @@ The configuration JSON file is loaded via the \App\Utils\Config singleton class 
 
 ## Routing
 
-SlimPHP handles all of the routing. Just one route in the main app.php now for demo purposes. 
+[SlimPHP](https://www.slimframework.com/) handles all of the routing. Just one route in the main app.php now for demo purposes. 
 
 ## Models
 
-Using the Eloquent ORM package (from the Laravel project) as a standalone
+Using the [Eloquent ORM package](https://laravel.com/docs/5.0/eloquent) (from the Laravel project) as a standalone
 
 ## Controllers
 
@@ -37,7 +37,19 @@ The controllers are generic callbacks that are referenced by the Slim PHP route 
 
 ## Authentication
 
-TK
+Using [JWT authentication](https://jwt.io/). The secret is in the config.json, but you should NEVER version or make this value public.
+Only here for demonstration purposes.
+
+All endpoints require authentication except for the `/ping` endpoint and the `/token` endpoint which is used to generate a new token for a user.
+
+For the purposes of this demo, you can use this token:
+`eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTbGltIFBIUCBEZW1vIEFwcCIsImlhdCI6MTQ5ODc4MjAyNSwiZXhwIjoxNTYxODU0MDI1LCJhdWQiOiJ3d3cuc2xpbS1waHAtZGVtby5jb20iLCJzdWIiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiR2l2ZW5OYW1lIjoiSmFuZSIsIlN1cm5hbWUiOiJEb2UiLCJFbWFpbCI6ImphbmUuZG9lQGV4YW1wbGUuY29tIiwiUm9sZSI6IkFkbWluIn0.aukn-FcigKdQ_kOFviMGuj1D5CxrjBWEt37yykuAdzA`
+
+A successful request would look like:
+
+`http://localhost:8080/customers 'Cookie:token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTbGltIFBIUCBEZW1vIEFwcCIsImlhdCI6MTQ5ODc4MjAyNSwiZXhwIjoxNTYxODU0MDI1LCJhdWQiOiJ3d3cuc2xpbS1waHAtZGVtby5jb20iLCJzdWIiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiR2l2ZW5OYW1lIjoiSmFuZSIsIlN1cm5hbWUiOiJEb2UiLCJFbWFpbCI6ImphbmUuZG9lQGV4YW1wbGUuY29tIiwiUm9sZSI6IkFkbWluIn0.aukn-FcigKdQ_kOFviMGuj1D5CxrjBWEt37yykuAdzA'`
 
 
 ## Error Messaging
+
+Always use appropriate status codes (401, 405, etc) for error responses and include a `message` property in the JSON response.

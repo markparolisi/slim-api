@@ -30,10 +30,8 @@ class Controller
 
         $resource = new \League\Fractal\Resource\Collection($customers, new \App\Customer\Transformer);
 
-        $data = $fractal->createData($resource)->toArray();
-
         return $response->withStatus(200)
                         ->withHeader("Content-Type", "application/json")
-                        ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+                        ->write($fractal->createData($resource)->toJson());
     }
 }
