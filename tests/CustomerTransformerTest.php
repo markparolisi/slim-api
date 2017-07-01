@@ -1,8 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-class UserTransformerTest extends TestCase
+class CustomerTransformerTest extends PHPUnit\Framework\TestCase
 {
 
     private $customer;
