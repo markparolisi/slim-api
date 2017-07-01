@@ -14,12 +14,11 @@ class Controller
      */
     public function generate(\Slim\Http\Request $request, \Slim\Http\Response $response): \Slim\Http\Response
     {
-
         $customer_name = $request->getParsedBody()['customer_name'];
 
         $customer = \App\Customer\Model::where('customerName', $customer_name)->firstOrFail();
 
-        if ( ! empty($customer)) {
+        if (! empty($customer)) {
             $key   = \App\Utils\Config::getInstance()->config()['authTokenKey'];
             $token = [
                 "iss" => "http://localhost:8080",
@@ -39,5 +38,4 @@ class Controller
 
         return $response;
     }
-
 }
